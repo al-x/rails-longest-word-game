@@ -1,0 +1,18 @@
+# Purpose: define API_KEY constant
+#
+# Rationale:
+# Separate API key from checked-in code, but include it via 'require_relative'
+#
+# Usage:
+# 1. Copy the template file constants.rb.tmpl to constants.rb
+# 2. Create a new API key. The format must be a UUID.
+# 3. To avoid sharing a valid the API key via git, .gitignore should list constants.rb
+#
+# Caveat:
+# Remember that a ruby constant must be declared with its name in
+# ALL_CAPS, otherwise no magic ruby dust is sprinkled upon it and it
+# will not be exported to the code which calls 'require_relative'
+#
+# The example key has been revoked
+
+API_KEY = 'f9d7c6e3-ddae-4dd5-8e96-8f4a7082195f'

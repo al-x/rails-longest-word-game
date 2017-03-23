@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'json'
+require_relative 'constants'
 
 def generate_grid(grid_size)
   # TODO: generate random grid of letters
@@ -26,10 +27,9 @@ def in_the_grid?(attempt, grid)
 end
 
 def systran_en_to_fr(attempt)
-  api_key = '4368e703-c81f-4ff7-99bb-7fb9ac33c7fd'
   origin = "https://api-platform.systran.net"
   path = "/translation/text/translate"
-  query = "?source=en&target=fr&key=#{api_key}&input=#{attempt}"
+  query = "?source=en&target=fr&key=#{API_KEY}&input=#{attempt}"
   url = origin + path + query
   systran_response = open(url).read
   systran_response ? JSON.parse(systran_response)["outputs"][0]["output"] : nil
