@@ -3,9 +3,11 @@
 <%= @grid.join(' ') %>
 
 <form action="/score" method="get">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <input type="hidden" name="grid" value="<%= @grid %>">
-  <input type="hidden" name="start_time" value="<%= @start_time %>">
   <input type="text" name="attempt">
+  <%= hidden_field_tag 'grid', @grid %>
+  <%= hidden_field_tag 'start_time', @start_time %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <input type="submit">
 </form>
+
+<%= link_to 'Start over!', game_path %>

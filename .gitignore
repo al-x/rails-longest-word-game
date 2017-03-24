@@ -19,3 +19,6 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore file with valid Systran API key
+config/initializers/systran_api_key.rb

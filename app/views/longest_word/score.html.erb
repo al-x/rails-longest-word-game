@@ -1,5 +1,5 @@
 <h1>Longest Word</h1>
-<p>Now your result</p>
+<p>Here's your score:</p>
 <ul>
   <li><%= "Your word: #{@attempt}" %>
   <li><%= "Time taken to answer: #{@result[:time]}" %>
@@ -7,4 +7,4 @@
   <li><%= "Your score: #{@result[:score]}" %>
   <li><%= "Message: #{@result[:message]}" %>
 <ul>
-<%= link_to 'Play again!', score_path %>
+<p><%= link_to 'Play again!', game_path %></p>
