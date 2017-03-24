@@ -8,8 +8,8 @@ class LongestWordController < ApplicationController
   end
 
   def score
-    @attempt = params[:attempt]
-    grid = eval(params[:grid])
+    @attempt = params[:attempt].downcase
+    grid = params[:grid]
     start_time = Time.at(params[:start_time].to_i)
     end_time = Time.now
     @result = run_game(@attempt, grid, start_time, end_time)
@@ -19,9 +19,9 @@ class LongestWordController < ApplicationController
 
   def generate_grid(grid_size)
     # TODO: generate random grid of letters
-    grid = []
+    grid = ''
     # add 65 for ASCII range A-Z
-    grid_size.times { grid << (rand(26) + 65).chr }
+    grid_size.times { grid << (rand(26) + 65).chr.upcase }
     return grid
   end
 
@@ -30,12 +30,12 @@ class LongestWordController < ApplicationController
     attempt_normal = attempt.upcase.split('').sort
     # normalize the grid and convert it into
     # a hash of arrays of letter instances
-    grid_hash =    grid.join.upcase.split('').sort.group_by { |l| l }
+    grid_sorted_hash = grid.split('').sort.group_by { |letter| letter }
     #
     # is it true that all elements of attempt_normal array are present
     # in grid_hash? If so, check that not all instances of that element
     # have already been exhausted (pop)
-    attempt_normal.all? { |l| grid_hash[l] ? grid_hash[l].pop : false }
+    attempt_normal.all? { |l| grid_sorted_hash[l] ? grid_sorted_hash[l].pop : false }
     #
     # another way to do it without the hash:
     # attempt_normal.all? { |l| attempt_normal.count(l) <= grid.count(l) }

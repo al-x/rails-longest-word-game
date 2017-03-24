@@ -1,10 +1,10 @@
 <h1>Longest Word</h1>
 <h2>Here is your grid:</h2>
-<%= @grid.join(' ') %>
+<strong><%= @grid.split('').join('  ') %></strong>
 
 <form action="/score" method="get">
-  <input type="text" name="attempt">
-  <%= hidden_field_tag 'grid', @grid.to_json %>
+  <input type="text" name="attempt" autofocus="true">
+  <%= hidden_field_tag 'grid', @grid %>
   <%= hidden_field_tag 'start_time', @start_time %>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <input type="submit">
